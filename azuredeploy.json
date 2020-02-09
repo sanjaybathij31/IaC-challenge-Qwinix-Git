@@ -263,6 +263,7 @@
       "name": "[variables('namingInfix')]",
       "location": "[parameters('location')]",
       "apiVersion": "2017-03-30",
+      "zones": ["1", "2"],
       "dependsOn": [
         "[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]",
         "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
