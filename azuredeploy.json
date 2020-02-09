@@ -56,7 +56,7 @@
       "metadata": {
         "description": "The base URI where artifacts required by this template are located. For example, if stored on a public GitHub repo, you'd use the following URI: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale."
       },
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale"
+      "defaultValue": "https://github.com/sanjaybathij31/IaC-challenge-Qwinix-Git"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
@@ -100,7 +100,7 @@
     "longNamingInfix": "[toLower(parameters('vmssName'))]",
     "addressPrefix": "10.0.0.0/16",
     "subnetPrefix": "10.0.0.0/24",
-    "networkSecurityGroupName": "allowRemoting",  
+    "networkSecurityGroupName": "[concat(variables('namingInfix'), 'Remot)]",  
     "virtualNetworkName": "[concat(variables('namingInfix'), 'vnet')]",
     "storageAccountName": "[concat(variables('namingInfix'), 'strg1')]",
     "publicIPAddressName": "[concat(variables('namingInfix'), 'pip')]",
