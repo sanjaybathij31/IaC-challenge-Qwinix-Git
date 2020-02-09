@@ -1,10 +1,12 @@
 # Create/Upgrade a VM Scale Set Running IIS Configured For Autoscale
 
-<The following template deploys a Windows VM Scale Set (VMSS) running an IIS .NET MVC application integrated with Azure autoscale. This template can be used to demonstrate initial rollout and confiuguration with the VMSS PowerShell DSC extension, as well as the process to upgrade an application already running on a VMSS.
+The following template deploys a Windows VM Scale Set (VMSS) running an IIS .NET MVC application integrated with Azure autoscale. This template can be used to demonstrate initial rollout and confiuguration with the VMSS PowerShell DSC extension, as well as the process to upgrade an application already running on a VMSS.
+
 VMSS Initial Deployment
 The template deploys a Windows VMSS with a 2 count of VMs in the scale set. Once the VMSS is deployed, the VMSS PowerShell DSC extension installs IIS and a default web app from a WebDeploy package. the website is accessible through LoadBalancer’s public DNS name and it shows
 message “IaC challenge completed: <Sanjay Bathija>”.
 The application URL is an output on ARM template. It's iacqwin.centralus.cloudapp.azure.com
+  
 VMSS Application Upgrade
 This template can also be used to demonstrate application upgrades for VMSS leveraging ARM template deployments and the VMSS PowerShell DSC extension.
 .
@@ -13,42 +15,45 @@ The Autoscale rules are configured as follows
 •	Sample for Percentage CPU in each VM every 1 Minute
 •	If the Percentage CPU is greater than 80% for 5 Minutes, then the scale out action (add more VM instances, one at a time) is triggered and scale down 1 web server at a time when cpu usage is less than 20%
 •	Once the scale out action is completed, the cool down period is 1 Minute
-Tasks Completed
-•	Create 1 VN (Virtual Network) and setup any other network resource required to enable the expected functionality of this challenge (e.g. route tables, internet gateway, nat gateway, subnets, etc.).
-•	Create 1 load balancer.
-•	Should be internet-facing with “crosszone" balancing activated.
-•	Should route http traffic to web servers
-•	Create two VM’s in private subnets located in different availability
-•	zones. These VM’s should be created within a Virtual machine scale set that comply with the following:
-o	VM’s have Linux or Windows (choose only one)
-o	maintain at least 2 VM’s running at any given time.
-o	install and configure IIS on port 80.
-o	create file index.html with content “IaC challenge completed: <your-name>”
-o	and configure IIS to serve that file by default.
-o	ensure IIS is always running even after rebooting the VM.
-o	create VM scaling policies to scale up 1 web server at a time based on a cpu alarm trigger of 80% and scale down 1 web server at a time when cpu usage is less than 20%.
-Tasks InComplete – timebound
-•	Bastion host : 
-•	web servers should have a policy that allows putting and getting objects from that bucket.
-•	● Initiate an Azure Database for PostgreSQL in a private subnet. Automate the installation of PostgreSQL client in web servers.
-•	Network traffic:
-•	Web servers: allow ssh traffic from only the bastion host, allow http traffic from the load balancer.
-•	bastion: allow ssh connections from anywhere.
-•	load balancer: allow http traffic from anywhere.
-•	database: allow postgres traffic from web servers.
-Minimum template outputs:
-● Bastion host’s static IP.
-● For any spec that wasn’t mentioned, choose a proper value keeping in mind a
-good balance between cost and performance. The monthly cost of the stack
-configured by the template shouldn’t exceed $300/mo.
 
-Bonus Features-
-● You can add these additional features to your template. Though they
-are not necessary to complete the challenge, they would certainly impress us:
-- set up an Azure Content Delivery Network distribution to speed up the distribution of
-static content stored in the storage bucket you created before.
-- set up notification to notify through email whenever a web server is launched and
-terminated. The email address should be received by an Azure resource manager
-parameter.
+Tasks Completed
+  •	Create 1 VN (Virtual Network) and setup any other network resource required to enable the expected functionality of this challenge (e.g. route tables, internet gateway, nat gateway, subnets, etc.).
+  •	Create 1 load balancer.
+  •	Should be internet-facing with “crosszone" balancing activated.
+  •	Should route http traffic to web servers
+  •	Create two VM’s in private subnets located in different availability zones. 
+  These VM’s should be created within a Virtual machine scale set that comply with the following:
+    o	VM’s have Linux or Windows (choose only one)
+    o	maintain at least 2 VM’s running at any given time.
+    o	install and configure IIS on port 80.
+    o	create file index.html with content “IaC challenge completed: <your-name>”
+    o	and configure IIS to serve that file by default.
+    o	ensure IIS is always running even after rebooting the VM.
+    o	create VM scaling policies to scale up 1 web server at a time based on a cpu alarm trigger of 80% and scale down 1 web server at a       time when cpu usage is less than 20%.
+
+Tasks InComplete – timebound
+  •	Bastion host : 
+  •	web servers should have a policy that allows putting and getting objects from that bucket.
+  •	Initiate an Azure Database for PostgreSQL in a private subnet. Automate the installation of PostgreSQL client in web servers.
+  •	Network traffic:
+  •	Web servers: allow ssh traffic from only the bastion host, allow http traffic from the load balancer.
+  2•	bastion: allow ssh connections from anywhere.
+  •	load balancer: allow http traffic from anywhere.
+  •	database: allow postgres traffic from web servers.
+
+  Minimum template outputs:
+  ● Bastion host’s static IP.
+  ● For any spec that wasn’t mentioned, choose a proper value keeping in mind a
+  good balance between cost and performance. The monthly cost of the stack
+  configured by the template shouldn’t exceed $300/mo.
+
+  Bonus Features-
+  ● You can add these additional features to your template. Though they
+  are not necessary to complete the challenge, they would certainly impress us:
+  - set up an Azure Content Delivery Network distribution to speed up the distribution of
+  static content stored in the storage bucket you created before.
+  - set up notification to notify through email whenever a web server is launched and
+  terminated. The email address should be received by an Azure resource manager
+  parameter.
 
 
