@@ -179,6 +179,9 @@
       "name": "[variables('publicIPAddressName')]",
       "location": "[parameters('location')]",
       "apiVersion": "2017-08-01",
+      "sku": {
+				"name": "Standard"
+			},
       "properties": {
         "publicIPAllocationMethod": "Static",
         "dnsSettings": {
