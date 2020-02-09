@@ -27,12 +27,12 @@
       "metadata": {
         "description": "String used as a base for naming resources. Must be 3-61 characters in length and globally unique across Azure. A hash is prepended to this string for some resources, and resource-specific information is appended."
       },
-      "minLength": 3,
+      "minLength": 2,
       "maxLength": 61
     },
     "instanceCount": {
       "type": "int",
-      "defaultValue": 3,
+      "defaultValue": 2,
       "metadata": {
         "description": "Number of VM instances (100 or less)."
       },
@@ -354,7 +354,7 @@
                   "timeWindow": "PT5M",
                   "timeAggregation": "Average",
                   "operator": "GreaterThan",
-                  "threshold": 50
+                  "threshold": 80
                 },
                 "scaleAction": {
                   "direction": "Increase",
@@ -373,7 +373,7 @@
                   "timeWindow": "PT5M",
                   "timeAggregation": "Average",
                   "operator": "LessThan",
-                  "threshold": 30
+                  "threshold": 20
                 },
                 "scaleAction": {
                   "direction": "Decrease",
