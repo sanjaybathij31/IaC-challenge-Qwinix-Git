@@ -5,8 +5,7 @@ The following template deploys a Windows VM Scale Set (VMSS) running an IIS .NET
 VMSS Initial Deployment
 The template deploys a Windows VMSS with a 2 count of VMs in the scale set. Once the VMSS is deployed, the VMSS PowerShell DSC extension installs IIS and a default web app from a WebDeploy package. the website is accessible through LoadBalancer’s public DNS name and it shows
 message “IaC challenge completed: <Sanjay Bathija>”.
-The application URL is an output on ARM template. It's iacqwin.centralus.cloudapp.azure.com
-  
+The application URL is an output on ARM template. It's qwinxiac.centralus.cloudapp.azure.com
 VMSS Application Upgrade
 This template can also be used to demonstrate application upgrades for VMSS leveraging ARM template deployments and the VMSS PowerShell DSC extension.
 .
