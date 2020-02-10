@@ -4,8 +4,8 @@ The following template deploys a Windows VM Scale Set (VMSS) running an IIS .NET
 
 VMSS Initial Deployment
 The template deploys a Windows VMSS with a 2 count of VMs in the scale set. Once the VMSS is deployed, the VMSS PowerShell DSC extension installs IIS and a default web app from a WebDeploy package. the website is accessible through LoadBalancer’s public DNS name and it shows
-message “IaC challenge completed: <Sanjay Bathija>”.
-The application URL is an output on ARM template. It's qwinxiac.centralus.cloudapp.azure.com
+message “IaC challenge completed: Sanjay Bathija".
+The application URL is an output on ARM template. It's http://qwinxiac.centralus.cloudapp.azure.com/MyApp
 VMSS Application Upgrade
 This template can also be used to demonstrate application upgrades for VMSS leveraging ARM template deployments and the VMSS PowerShell DSC extension.
 .
@@ -25,10 +25,21 @@ Tasks Completed
     o	VM’s have Linux or Windows (choose only one)
     o	maintain at least 2 VM’s running at any given time.
     o	install and configure IIS on port 80.
-    o	create file index.html with content “IaC challenge completed: <your-name>”
     o	and configure IIS to serve that file by default.
     o	ensure IIS is always running even after rebooting the VM.
-    o	create VM scaling policies to scale up 1 web server at a time based on a cpu alarm trigger of 80% and scale down 1 web server at a       time when cpu usage is less than 20%.
+    o	create VM scaling policies to scale up 1 web server at a time based on a cpu alarm trigger of 80% and scale down 1 web server at a time when cpu usage is less than 20%.
+
+Items Included
+    o  VMSS -> Easy to Create, Provides high Availability, allows application to auto scaledown as demand changes
+    o  Blob storage - public read
+    o  load balancer: allow http traffic from anywhere
+    o  Webservers : 2 VM’s in private subnets located in different availability zones allows redudancy and HA.
+    o  good balance between cost and performance. The monthly cost of the stack configured by the template is below $300/mo
+    o  automation of IIS / ASP.Net MVC application using MS powershell DSC from the ARM template
+    o  network security groups : network security group (NSG) contains a list of security rules that allow or deny network traffic to resources connected to 
+       Azure Virtual Networks (VNet). NSGs can be associated to subnets, individual VMs (classic), or individual network interfaces (NIC) attached to VMs (Resource Manager)
+
+
 
 Tasks InComplete – timebound
   •	Bastion host : 
