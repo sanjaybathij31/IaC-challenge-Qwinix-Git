@@ -343,6 +343,9 @@
               {
                 "name": "[variables('nicName')]",
                 "properties": {
+                  "networkSecurityGroup": {
+										"id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+									},
                   "primary": true,
                   "ipConfigurations": [
                     {
