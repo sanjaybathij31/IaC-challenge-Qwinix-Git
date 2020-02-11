@@ -42,6 +42,7 @@ Items Included
 
 
 Tasks InComplete – timebound & Azure service I have is paid subscription
+
   •	Bastion host : 
   •	web servers should have a policy that allows putting and getting objects from that bucket.
   •	Initiate an Azure Database for PostgreSQL in a private subnet. Automate the installation of PostgreSQL client in web servers.
