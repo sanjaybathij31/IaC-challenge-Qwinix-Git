@@ -28,7 +28,10 @@ Tasks Completed
     o	and configure IIS to serve that file by default.
     o	ensure IIS is always running even after rebooting the VM.
     o	create VM scaling policies to scale up 1 web server at a time based on a cpu alarm trigger of 80% and scale down 1 web server at a time when cpu usage is less than 20%.
-
+    •	web servers should have a policy that allows putting and getting objects from that bucket.
+     - set up an Azure Content Delivery Network distribution to speed up the distribution of
+  static content stored in the storage bucket you created before.
+  
 Items Included
     o  VMSS -> Easy to Create, Provides high Availability, allows application to auto scaledown as demand changes
     o  Blob storage - public read
@@ -46,8 +49,8 @@ Items Included
 Tasks InComplete – timebound & Azure service I have is paid subscription
 
   •	Bastion host : 
-  •	web servers should have a policy that allows putting and getting objects from that bucket.
   •	Initiate an Azure Database for PostgreSQL in a private subnet. Automate the installation of PostgreSQL client in web servers.
+
   •	Network traffic:
   •	Web servers: allow ssh traffic from only the bastion host, allow http traffic from the load balancer.
   2•	bastion: allow ssh connections from anywhere.
@@ -63,8 +66,7 @@ Tasks InComplete – timebound & Azure service I have is paid subscription
   Bonus Features-
   ● You can add these additional features to your template. Though they
   are not necessary to complete the challenge, they would certainly impress us:
-  - set up an Azure Content Delivery Network distribution to speed up the distribution of
-  static content stored in the storage bucket you created before.
+ 
   - set up notification to notify through email whenever a web server is launched and
   terminated. The email address should be received by an Azure resource manager
   parameter.
