@@ -38,6 +38,8 @@ Items Included
     o  automation of IIS / ASP.Net MVC application using MS powershell DSC from the ARM template
     o  network security groups : network security group (NSG) contains a list of security rules that allow or deny network traffic to resources connected to 
        Azure Virtual Networks (VNet). NSGs can be associated to subnets, individual VMs (classic), or individual network interfaces (NIC) attached to VMs (Resource Manager)
+    o  The ARM templates could have be used as linked templates for provisioning individual resources, that way managing ARM templates will become more easier 
+       and better reusability.
 
 
 
